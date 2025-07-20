@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>All Meditations</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <style>
+    .book-filter {
+      margin: 20px auto;
+      max-width: 300px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .book-section {
+      margin-top: 40px;
+      text-align: left;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .book-section h2 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+    }
+
+    .quote-pair {
+      margin: 8px 0;
+    }
+
+    .theme-pill {
+      display: inline-block;
+      margin: 3px;
+      padding: 4px 10px;
+      font-size: 0.75em;
+      background: #eee;
+      border-radius: 12px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>📖 Explore Meditations by Book</h1>
+
+  <div class="book-filter">
+    <label for="bookSelect">📚 Book:</label>
+    <select id="bookSelect" onchange="renderSelectedBook()">
+      <option value="">-- Select a Book --</option>
+    </select>
+  </div>
+
+  <div id="book-content"></div>
+
+  <script>
+    let meditations = {};
+    let bookMap = {};
+
+    fetch('data/meditations.json')
+      .then(res => res.json())
+      .then(data => {
+        meditations = data;
+
+        // Group by book
+        for (const key in data) {
+          const [book, section] = key.split('-');
+          if (!bookMap[book]) bookMap[book] = [];
+          bookMap[book].push({ section, key, ...data[key] });
+        }
+
+        // Populate dropdown
+        const select = document.getElementById("bookSelect");
+        Object.keys(bookMap).sort((a, b) => a - b).forEach(bookNum => {
+          const option = document.createElement("option");
+          option.value = bookNum;
+          option.textContent = `Book ${bookNum}`;
+          select.appendChild(option);
+        });
+      });
+
+    function renderSelectedBook() {
+      const bookNum = document.getElementById("bookSelect").value;
+      const container = document.getElementById("book-content");
+      container.innerHTML = "";
+
+      if (!bookMap[bookNum]) return;
+
+      const bookDiv = document.createElement('div');
+      bookDiv.className = "book-section";
+      bookDiv.innerHTML = `<h2>Book ${bookNum}</h2>`;
+
+      bookMap[bookNum].forEach(entry => {
+        const text = typeof entry === 'string' ? entry : entry.text || "(empty)";
+        const themes = entry.themes || [];
+
+        const quote = document.createElement('div');
+        quote.className = "quote-pair";
+        quote.innerHTML = `<strong>Section ${entry.section}:</strong> ${text}`;
+
+        // Show themes as pills
+        if (themes.length) {
+          const themeList = themes.map(t => `<span class="theme-pill">${t}</span>`).join(" ");
+          quote.innerHTML += `<div>${themeList}</div>`;
+        }
+
+        bookDiv.appendChild(quote);
+      });
+
+      container.appendChild(bookDiv);
+    }
+  </script>
+</body>
+</html>

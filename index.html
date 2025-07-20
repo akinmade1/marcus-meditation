@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Stoic Reading</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+  <h1>🧘🏽‍♂️ Daily "Meditation" Stoic Reading</h1>
+
+  <h2>🧭 Filter by Theme</h2>
+  <div class="filter-box">
+    <button onclick="filterByTheme('discipline')">Discipline</button>
+    <button onclick="filterByTheme('love')">Love</button>
+    <button onclick="filterByTheme('god')">God</button>
+    <button onclick="filterByTheme('death')">Death</button>
+    <button onclick="filterByTheme('time')">Time</button>
+    <button onclick="filterByTheme('good')">Good</button>
+    <button onclick="filterByTheme('stoic')">Stoic</button>
+    <button onclick="filterByTheme('character')">Character</button>
+  </div>
+
+  <div class="quote-box" id="reading">Loading...</div>
+  <div id="quote-text" class="quote-text"></div>
+
+  <div class="button-row">
+    <button onclick="showDailyInsight()">🌞 Daily Insight</button>
+    <button onclick="window.location.href='books.html'">📚 Explore All Books</button>
+  </div>
+
+  <script src="scripts/meditations.js"></script>
+</body>
+</html>

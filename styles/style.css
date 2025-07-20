@@ -1,0 +1,95 @@
+body {
+  background: #f8f4ee;
+  font-family: 'Georgia', serif;
+  color: #333;
+  text-align: center;
+  padding: 50px;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-top: 30px;
+  font-size: 1.4em;
+}
+
+.quote-box {
+  background: #fff;
+  padding: 25px;
+  margin-top: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+}
+
+.quote-text {
+  margin-top: 10px;
+  font-style: italic;
+  font-size: 1.1em;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 24px;
+  font-size: 1em;
+  cursor: pointer;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background: #555;
+}
+
+.filter-box {
+  background: #fff;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.filter-box button {
+  background-color: #444;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 0.95em;
+  cursor: pointer;
+}
+
+.filter-box button:hover {
+  background-color: #666;
+}
+
+.button-row {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.theme-list {
+  margin-top: 10px;
+}
+
+.theme-pill {
+  display: inline-block;
+  background: #eee;
+  color: #333;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.75em;
+  margin: 4px 6px;
+}
