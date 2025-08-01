@@ -93,3 +93,19 @@ button:hover {
   font-size: 0.75em;
   margin: 4px 6px;
 }
+
+/* 📱 Mobile Responsive Styles */
+body {
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.quote-box,
+.filter-box,
+.search-box,
+.button-row {
+  max-width: 95vw;
+  width: 100%;
+  box-sizing: border-box;
+}
